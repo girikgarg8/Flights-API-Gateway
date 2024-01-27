@@ -20,6 +20,10 @@
 </ol>
 </p>
 
+**Sequence Diagram for Sign in functionality**
+
+![Sequence diagram](src/Sequence_diagram_for_signin.PNG)
+
 <h3>Technologies Used</h3>
 <ul>
 <li>Node.js</li>
