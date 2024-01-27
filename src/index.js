@@ -5,7 +5,7 @@ const { PORT } = require('./config/index');
 const apiRoutes = require('./routes/index');
 
 const { ServerConfig, Logger } = require('./config/index');
-
+const { Auth } = require('./utils/common')
 
 const app = express();
 

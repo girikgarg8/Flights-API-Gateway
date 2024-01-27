@@ -4,7 +4,7 @@ const { StatusCodes } = require('http-status-codes');
 
 const AppError = require('../utils/errors/app-error')
 
-const {Auth} = require('../utils/common');
+const { Auth } = require('../utils/common');
 
 const userRepository = new UserRepository();
 
@@ -35,17 +35,40 @@ async function signIn(data) {
         if (!passwordMatch) {
             throw new AppError('Invalid request', StatusCodes.BAD_REQUEST);
         }
-        const jwt = Auth.createToken({id:user.id,email:user.email});
+        const jwt = Auth.createToken({ id: user.id, email: user.email });
         return jwt;
     }
     catch (error) {
         if (error instanceof AppError) throw error;
         console.log(error);
-        throw new AppError('Something went wrong',StatusCodes.INTERNAL_SERVER_ERROR);
+        throw new AppError('Something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+async function isAuthenticated(token) {
+    try {
+        if (!token) {
+            throw new AppError('Missing JWT Token', StatusCodes.BAD_REQUEST);
+        }
+        const response = Auth.verifyToken(token);
+        const user= await userRepository.get(response.id); //additional level of check, to ensure that the JWT token is not a stale token, and maybe the user was deleted from the table
+        if (!user){
+            throw new AppError('No user found',StatusCodes.NOT_FOUND);
+        }
+        return user.id;
+    }
+    catch (error) {
+        if (error instanceof AppError) throw error;
+        if (error.name == 'JsonWebTokenError') {
+            throw new AppError('Invalid JWT Token',StatusCodes.BAD_REQUEST);
+        }
+        console.log(error);
+        throw new AppError('Something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
 module.exports = {
     createUser,
-    signIn
+    signIn,
+    isAuthenticated
 }
