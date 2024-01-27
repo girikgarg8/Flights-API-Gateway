@@ -37,7 +37,18 @@ async function checkAuth(req, res, next) { //This function is used to ensure tha
     }
 }
 
+async function isAdmin(req, res, next) { //This function is used to check whether the given user is admin or not, hence implementing authorization mechanisms
+    const response = await UserService.isAdmin(req.user);
+    if (!response){
+        return res
+                .status(StatusCodes.FORBIDDEN)
+                .json({message: 'User not authorized for this action'})
+    }
+    next();
+}
+
 module.exports = {
     validateAuthRequest,
-    checkAuth
+    checkAuth,
+    isAdmin
 }
