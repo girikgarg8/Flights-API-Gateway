@@ -55,4 +55,10 @@ Some of the snapshots from this service are:
 
 ![Flights Search Service Routing](src/Flights_Search_Service_API_Routing.PNG)
 
+4. Assign (Add) role API working correctly when the user making the request is an admin:
 
+![Successful authorization](src/Successful_authorization_hence_able_to_use_the_assign_API.PNG)
+
+5. Assign (Add) role API not working correctly when the user making the request is not an admin:
+
+![Unsuccessful authorization](src/Authorization_fail_in_case_of_non_admin_role.PNG)
