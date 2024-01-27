@@ -1,13 +1,13 @@
 # Flight Ticket Booking API Gateway
 
 
-<h3>Introduction</h3>
+<h3>Introduction to the API Gateway Service</h3>
 <p>
     Flight Ticket Booking API Gateway Service is a Node.js-based microservice that acts as a single entry point for various services in the flight ticket booking system. This service facilitates user registration, authentication, and routing requests to the appropriate microservices while implementing essential features such as JWT token authentication, rate limiting, and reverse proxy.
 </p>
 
 
-<h3>Design</h3>
+<h3>High Level Design of Project</h3>
 <img src="/src/High-Level-Design.png" alt="High level design of project"/>
 
 
