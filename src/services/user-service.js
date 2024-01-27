@@ -1,16 +1,19 @@
-const { UserRepository } = require('../repositories');
+const { UserRepository, RoleRepository } = require('../repositories');
 
 const { StatusCodes } = require('http-status-codes');
 
 const AppError = require('../utils/errors/app-error')
 
-const { Auth } = require('../utils/common');
+const { Auth, Enums } = require('../utils/common');
 
 const userRepository = new UserRepository();
+const roleRepository = new RoleRepository();
 
-async function createUser(data) {
+async function create(data) {
     try {
         const user = await userRepository.create(data);
+        const role= await roleRepository.getRoleByName(Enums.USER_ROLES_ENUMS.CUSTOMER);
+        user.addRole(role);
         return user;
     }
     catch (error) {
@@ -64,13 +67,12 @@ async function isAuthenticated(token) {
         if (error.name == 'TokenExpiredError') {
             throw new AppError('JWT Token Expired', StatusCodes.BAD_REQUEST);
         }
-        console.log(error);
         throw new AppError('Something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
 module.exports = {
-    createUser,
+    create,
     signIn,
     isAuthenticated
 }

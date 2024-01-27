@@ -10,7 +10,7 @@ const { SuccessResponse, ErrorResponse } = require('../utils/common/index');
  */
 async function createUser(req, res) {
     try {
-        const user = await UserService.createUser({
+        const user = await UserService.create({
             email: req.body.email,
             password: req.body.password
         })
