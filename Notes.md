@@ -6,4 +6,19 @@ We use triggers (known as hooks in Sequelize), to compute the hash of the passwo
 
 Authentication: verifying the identity from the request vs Authorization: checking what all permissions someone has
 
-For authentication, there are many third party packages available like Passport, however we'll be using custom authentication in our service.
+For authentication, there are many third party packages available like Passport, however we'll be using custom JWT based authentication in our service. Using custom JWT based authentication has more learning than just using Passport.
+
+The API gateway facilitates authentication, routing requests to the appropriate microservices, rate limiting, and reverse proxy.
+
+NGINX is also one of the industry used load balancer and acts as a reverse proxy.
+
+We are using the 'npm-express-limit' package in order to ensure rate limiting in our project. Rate limiting allows us to set a limit on the maximum number of requests than can be made from an IP in a specific duration of time.
+
+We used the 'http-proxy-middleware' package in order to implement API routing within our project.
+
+**Non-persistent connection**
+
+A non-persistent connection, also known as a “short-lived connection”, is a connection that is closed after a single request-response cycle is completed. In a non-persistent connection, each request requires a new connection to be established between the client and server. This means that the client must repeatedly establish a connection and send a new request to the server for each resource it needs, resulting in more overhead and slower performance. Example: in chatting and gaming applications.
+
+**Persistent connection**
+On the other hand, a persistent connection, also known as a “keep-alive connection”, is a connection that remains open for multiple request-response cycles. In a persistent connection, multiple requests can be sent over the same connection without the need to repeatedly establish a new connection. This can result in faster performance and less overhead.

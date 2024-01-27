@@ -7,7 +7,6 @@ function checkPassword(plainPassword, encryptedPassword) {
         return bcrypt.compareSync(plainPassword, encryptedPassword);
     }
     catch (error) {
-        console.log(error);
         throw error;
     }
 }
@@ -17,7 +16,6 @@ function createToken(input) {
         return jwt.sign(input, ServerConfig.JWT_SECRET, { expiresIn: ServerConfig.JWT_EXPIRY });
     }
     catch (error) {
-        console.log(error);
         throw error;
     }
 }
@@ -27,7 +25,6 @@ function verifyToken(token){
         return jwt.verify(token,ServerConfig.JWT_SECRET);
     }
     catch(error){
-        console.log(error);
         throw error;
     }
 }

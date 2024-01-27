@@ -40,7 +40,6 @@ async function signIn(data) {
     }
     catch (error) {
         if (error instanceof AppError) throw error;
-        console.log(error);
         throw new AppError('Something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }

@@ -14,7 +14,7 @@
 <h3>Features of the API Gateway Service</h3>
 <p>
 <ol>
-<li><p><b>User Registeration and Sign Up:</b> Implemented APIs for user registration and sign-up using JWT tokens for secure authentication and bcrypt for storing passwords securely.</p></li>
+<li><p><b>User Registration and Sign Up:</b> Implemented APIs for user registration and sign-up using JWT tokens for secure authentication and bcrypt for storing passwords securely.</p></li>
 <li><p><b>Rate Limiter:</b>Integrated rate limiting functionality to limit the number of requests made to the API to prevent abuse and ensure fair usage.</p></li>
 <li><p><b>Reverse Proxy:</b>Configured a reverse proxy to enable access to multiple services through a single gateway, providing a streamlined experience for clients.</p></li>
 </ol>
@@ -23,6 +23,24 @@
 **Sequence Diagram for Sign in functionality**
 
 ![Sequence diagram](src/Sequence_diagram_for_signin.PNG)
+
+**High level overview of this service**
+
+
+
+Some of the snapshots from this service are:
+
+1. Rate limiting in action
+
+![Rate limiting in action](src/Rate_Limiting_in_action.PNG)
+
+2. Flights Booking Service being routed by the reverse proxy
+
+![Flights Booking Service Routing](src/Flights_Booking_Service_API_Routing.PNG)
+
+3. Flights Search Service being routed by the reverse proxy
+
+![Flights Search Service Routing](src/Flights_Search_Service_API_Routing.PNG)
 
 <h3>Technologies Used</h3>
 <ul>
