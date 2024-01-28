@@ -8,7 +8,7 @@
 
 
 <h3>High Level Design of Project</h3>
-<img src="/src/High-Level-Design.png" alt="High level design of project"/>
+<img src="High-Level-Design.png" alt="High level design of project"/>
 
 
 <h3>Features of the API Gateway Service</h3>
@@ -22,11 +22,11 @@
 
 **Schema of this service**
 
-![Schema_of_authentication_and_Authorization](src/Schema_for_authentication_and_authorization.PNG)
+![Schema_of_authentication_and_Authorization](./Schema_for_authentication_and_authorization.PNG)
 
 **Sequence Diagram for Sign in functionality**
 
-![Sequence diagram](src/Sequence_diagram_for_signin.PNG)
+![Sequence diagram](./Sequence_diagram_for_signin.PNG)
 
 **High level overview of this service**
 
@@ -45,20 +45,20 @@ Some of the snapshots from this service are:
 
 1. Rate limiting in action
 
-![Rate limiting in action](src/Rate_Limiting_in_action.PNG)
+![Rate limiting in action](./Rate_Limiting_in_action.PNG)
 
 2. Flights Booking Service being routed by the reverse proxy
 
-![Flights Booking Service Routing](src/Flights_Booking_Service_API_Routing.PNG)
+![Flights Booking Service Routing](./Flights_Booking_Service_API_Routing.PNG)
 
 3. Flights Search Service being routed by the reverse proxy
 
-![Flights Search Service Routing](src/Flights_Search_Service_API_Routing.PNG)
+![Flights Search Service Routing](./Flights_Search_Service_API_Routing.PNG)
 
 4. Assign (Add) role API working correctly when the user making the request is an admin:
 
-![Successful authorization](src/Successful_authorization_hence_able_to_use_the_assign_API.PNG)
+![Successful authorization](./Successful_authorization_hence_able_to_use_the_assign_API.PNG)
 
 5. Assign (Add) role API not working correctly when the user making the request is not an admin:
 
-![Unsuccessful authorization](src/Authorization_fail_in_case_of_non_admin_role.PNG)
+![Unsuccessful authorization](./Authorization_fail_in_case_of_non_admin_role.PNG)

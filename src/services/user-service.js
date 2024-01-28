@@ -103,16 +103,29 @@ async function isAdmin(id) {
         return user.hasRole(adminRole);
     }
     catch (error) {
-        console.log('Error is ', error);
         if (error instanceof AppError) throw error;
         throw new AppError('Something went wrong', StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
+async function getUserDetails(id) {
+    try {
+        const user = await userRepository.get(id);
+        if (!user) {
+            throw new AppError('No user found for the given ID', StatusCodes.NOT_FOUND);
+        }
+        return user;
+    }
+    catch (error) {
+        if (error instanceof AppError) throw error;
+        throw new AppError('Something went wrong in the API Gateway', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 module.exports = {
     create,
     signIn,
     isAuthenticated,
     addRoleToUser,
-    isAdmin
+    isAdmin,
+    getUserDetails
 }

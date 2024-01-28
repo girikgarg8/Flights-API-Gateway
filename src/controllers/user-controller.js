@@ -46,27 +46,44 @@ async function signIn(req, res) {
     }
 }
 
-async function addRoleToUser(req,res){
-    try{
-        const user= await UserService.addRoleToUser({
+async function addRoleToUser(req, res) {
+    try {
+        const user = await UserService.addRoleToUser({
             role: req.body.role,
             id: req.body.id
         })
-        SuccessResponse.data=user;
+        SuccessResponse.data = user;
         return res
-                .status(StatusCodes.CREATED)
-                .json(SuccessResponse);
+            .status(StatusCodes.CREATED)
+            .json(SuccessResponse);
     }
-    catch(error){
-        ErrorResponse.error=error;
+    catch (error) {
+        ErrorResponse.error = error;
         return res
-                .status(error.statuCode)
-                .json(ErrorResponse);
+            .status(error.statuCode)
+            .json(ErrorResponse);
+    }
+}
+
+async function getUserDetails(req, res) {
+    try {
+        const user = await UserService.getUserDetails(req.params.id);
+        SuccessResponse.data = user;
+        return res
+            .status(StatusCodes.OK)
+            .json(SuccessResponse);
+    }
+    catch (error) {
+        ErrorResponse.error = error;
+        return res
+            .status(error.statuCode)
+            .json(ErrorResponse);
     }
 }
 
 module.exports = {
     createUser,
     signIn,
-    addRoleToUser
+    addRoleToUser,
+    getUserDetails
 }
